@@ -6,7 +6,7 @@ const autoclicker = document.getElementById('autoclicker');
 const pts = document.getElementById('pts');
 
 
-let score = 200;
+let score = 0;
 let clickValue = 1; //początkowa wartość kliknięcie
 let clickUpgradeCost = 10; //Cena bazowa ulepszenia kliknięcia
 let clickUpgradeCount = 0; //Ilośc zakupionych ulepszeń kliknięcia
