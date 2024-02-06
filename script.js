@@ -2,16 +2,20 @@ const clickButton = document.getElementById('clickButton');
 const upgradeButton = document.getElementById('upgradeButton');
 const scoreDisplay = document.getElementById('score');
 const messageDisplay = document.getElementById('message')
+//autoclick
 const autoclicker = document.getElementById('autoclicker');
 const punktograb = document.getElementById('punktograb')
 const pts = document.getElementById('pts');
+//upgrady
+const clickx2 = document.getElementById('clickx2');
 
 
-
-let score = 1200;
+let score = 0;
 let clickValue = 1; //początkowa wartość kliknięcie
 let clickUpgradeCost = 10; //Cena bazowa ulepszenia kliknięcia
 let clickUpgradeCount = 0; //Ilośc zakupionych ulepszeń kliknięcia
+let clickMultipleCost = 1;
+let clickMultipeCount = 0;
 
 let baseAutoclickerValue = 0.8;
 let autoclickerUpgradeCost = 200; //Cena bazowa autoclickera
@@ -72,6 +76,25 @@ upgradeButton.addEventListener('click', () => {
         showMessage("Nie masz wystarczającej liczby punktów, aby kupić to ulepszenie");
     }
 });
+
+clickx2.addEventListener('click', () => {
+    if (score >= clickMultipleCost) {
+        
+        clickValue *= 2;
+
+        clickMultipeCount += 1;
+
+        score -= clickMultipleCost;
+
+        updateUpgradeButton();
+        updateScore();
+        updateAutoclicker();
+        clearMessage();
+        clickPurchase();
+        autoclickerPurchase();
+        punktograbPurchase();
+    }
+})
 
 function addAutoclicker() {
     if (score >= autoclickerUpgradeCost) {
